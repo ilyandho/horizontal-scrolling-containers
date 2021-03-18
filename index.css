@@ -1,0 +1,13 @@
+section.container {
+  display: flex;
+  overflow-x: auto;
+}
+
+section.container img {
+  width: 300px;
+  margin-right: 0.9rem;
+}
+
+section.container::-webkit-scrollbar {
+  display: none;
+}
