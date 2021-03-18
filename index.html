@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Horizontal scroll</title>
     <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <script>
+      const handleNext = () => {
+        const section = document.querySelector(".container");
+        console.log(section);
+        section.scrollLeft += window.innerWidth;
+      };
+    </script>
   </head>
   <body>
     <section class="container">
@@ -31,7 +44,12 @@
       <img
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-7.jpg"
         alt="Bhutan"
+        class="lastChild"
       />
+
+      <div class="next" onclick="{handleNext()}">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </div>
     </section>
   </body>
 </html>

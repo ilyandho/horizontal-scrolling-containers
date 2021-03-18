@@ -1,6 +1,15 @@
+body {
+  background: rgb(5, 28, 43);
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
 section.container {
   display: flex;
   overflow-x: auto;
+  position: relative;
 }
 
 section.container img {
@@ -8,6 +17,28 @@ section.container img {
   margin-right: 0.9rem;
 }
 
+.lastChild {
+  margin-right: 1.2rem;
+}
+
 section.container::-webkit-scrollbar {
   display: none;
+}
+
+.next {
+  position: sticky;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: aliceblue;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  /* background: rgba(31, 1, 1, 0.6); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 50%; */
+  /* border: 3px #000 solid; */
+  cursor: pointer;
 }
