@@ -23,11 +23,12 @@ section.container img {
 
 section.container::-webkit-scrollbar {
   display: none;
+  scroll-behavior: smooth;
 }
 
-.next {
+.next,
+.prev {
   position: sticky;
-  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: aliceblue;
@@ -38,7 +39,12 @@ section.container::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 50%; */
-  /* border: 3px #000 solid; */
   cursor: pointer;
+}
+
+.next {
+  right: 1rem;
+}
+.prev {
+  left: 1rem;
 }
