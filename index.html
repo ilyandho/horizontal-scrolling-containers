@@ -14,15 +14,48 @@
     <script>
       const handleNext = () => {
         const section = document.querySelector(".container");
-        console.log(section);
         section.scrollLeft += window.innerWidth;
+
+        const firstEle = document.querySelector(".first");
+        const circle = document.querySelector(".fa-circle");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        circle.getBoundingClientRect().x < window.innerWidth - 27
+          ? (nextBtn.style.display = "none")
+          : (nextBtn.style.display = "block");
       };
 
       const handlePrev = () => {
         const section = document.querySelector(".container");
-        console.log(section);
         section.scrollLeft -= window.innerWidth;
+
+        const firstEle = document.querySelector(".first");
+        const lastEle = document.querySelector(".lastChild");
+        const nextBtn = document.querySelector(".next");
+        const prevBtn = document.querySelector(".prev");
+        firstEle.getBoundingClientRect().x < 0
+          ? (prevBtn.style.display = "block")
+          : (prevBtn.style.display = "none");
+
+        lastEle.getBoundingClientRect().x + lastEle.getBoundingClientRect() >
+        window.innerWidth
+          ? (nextBtn.style.display = "block")
+          : (nextBtn.style.display = "none");
+
+        console.log(lastEle.getBoundingClientRect(), prevBtn.style.display);
       };
+      window.addEventListener("load", () => {
+        const firstEle = document.querySelector(".first");
+        const prevBtn = document.querySelector(".prev");
+
+        console.log(firstEle.getBoundingClientRect(), prevBtn.style.display);
+        if (firstEle.getBoundingClientRect().x < 0) {
+          console.log("..........................");
+          prevBtn.style.display = "none";
+        }
+        prevBtn.style.display = "none";
+        console.log(firstEle.getBoundingClientRect(), prevBtn.style.display);
+      });
     </script>
   </head>
   <body>
@@ -33,6 +66,7 @@
       <img
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg"
         alt="Bhutan"
+        class="first"
       />
       <img
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-2.jpg"
@@ -55,6 +89,7 @@
         alt="Bhutan"
         class="lastChild"
       />
+      <i class="fa fa-circle" aria-hidden="true"></i>
 
       <div class="next" onclick="{handleNext()}">
         <i class="fa fa-arrow-right" aria-hidden="true"></i>

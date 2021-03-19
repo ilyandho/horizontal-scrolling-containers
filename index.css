@@ -4,16 +4,19 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 section.container {
   display: flex;
   overflow-x: auto;
   position: relative;
+  align-items: center;
 }
 
 section.container img {
   width: 300px;
+  height: calc(300px / (16 / 9));
   margin-right: 0.9rem;
 }
 
@@ -23,7 +26,6 @@ section.container img {
 
 section.container::-webkit-scrollbar {
   display: none;
-  scroll-behavior: smooth;
 }
 
 .next,
@@ -47,4 +49,17 @@ section.container::-webkit-scrollbar {
 }
 .prev {
   left: 1rem;
+}
+.fa-circle {
+  font-size: 0.5em;
+  color: #ccc;
+}
+
+@media screen and (max-width: 540px) {
+  .next {
+    display: none;
+  }
+  .prev {
+    display: none;
+  }
 }
