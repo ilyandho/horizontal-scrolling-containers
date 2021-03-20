@@ -20,9 +20,17 @@
         const circle = document.querySelector(".fa-circle");
         const prevBtn = document.querySelector(".prev");
         const nextBtn = document.querySelector(".next");
+
+        console.log(circle.getBoundingClientRect().x, window.innerWidth - 30);
+
         circle.getBoundingClientRect().x < window.innerWidth - 27
           ? (nextBtn.style.display = "none")
           : (nextBtn.style.display = "block");
+
+        if (firstEle.getBoundingClientRect().x < 0) {
+          console.log("..........................");
+          prevBtn.style.display = "block";
+        }
       };
 
       const handlePrev = () => {
@@ -30,31 +38,33 @@
         section.scrollLeft -= window.innerWidth;
 
         const firstEle = document.querySelector(".first");
-        const lastEle = document.querySelector(".lastChild");
-        const nextBtn = document.querySelector(".next");
+        const circle = document.querySelector(".fa-circle");
         const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        circle.getBoundingClientRect().x < window.innerWidth - 27
+          ? (nextBtn.style.display = "none")
+          : (nextBtn.style.display = "block");
+
         firstEle.getBoundingClientRect().x < 0
           ? (prevBtn.style.display = "block")
           : (prevBtn.style.display = "none");
-
-        lastEle.getBoundingClientRect().x + lastEle.getBoundingClientRect() >
-        window.innerWidth
-          ? (nextBtn.style.display = "block")
-          : (nextBtn.style.display = "none");
-
-        console.log(lastEle.getBoundingClientRect(), prevBtn.style.display);
       };
       window.addEventListener("load", () => {
         const firstEle = document.querySelector(".first");
         const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        const circle = document.querySelector(".fa-circle");
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "block";
 
         console.log(firstEle.getBoundingClientRect(), prevBtn.style.display);
         if (firstEle.getBoundingClientRect().x < 0) {
-          console.log("..........................");
-          prevBtn.style.display = "none";
+          prevBtn.style.display = "block";
         }
-        prevBtn.style.display = "none";
-        console.log(firstEle.getBoundingClientRect(), prevBtn.style.display);
+
+        circle.getBoundingClientRect().x < window.innerWidth - 27
+          ? (nextBtn.style.display = "none")
+          : (nextBtn.style.display = "block");
       });
     </script>
   </head>
