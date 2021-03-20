@@ -4,17 +4,28 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 section.container {
   display: flex;
   overflow-x: auto;
   position: relative;
+  align-items: center;
 }
 
 section.container img {
   width: 300px;
+  height: calc(300px / (16 / 9));
   margin-right: 0.9rem;
+}
+
+section.container img:hover {
+  transition: all 150ms;
+  height: calc((300px / (16 / 9)) * 1.2);
+  margin: 0 2em;
+  transform: scale(1.2);
+  transform-origin: center;
 }
 
 .lastChild {
@@ -25,9 +36,9 @@ section.container::-webkit-scrollbar {
   display: none;
 }
 
-.next {
+.next,
+.prev {
   position: sticky;
-  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: aliceblue;
@@ -38,7 +49,27 @@ section.container::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 50%; */
-  /* border: 3px #000 solid; */
   cursor: pointer;
+}
+
+.next {
+  right: 1rem;
+  /* display: block; */
+}
+.prev {
+  left: 1rem;
+  /* display: none; */
+}
+.fa-circle {
+  font-size: 0.5em;
+  color: #ccc;
+}
+
+@media screen and (max-width: 540px) {
+  .next {
+    display: none;
+  }
+  .prev {
+    display: none;
+  }
 }

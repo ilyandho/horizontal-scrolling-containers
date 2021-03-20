@@ -14,16 +14,69 @@
     <script>
       const handleNext = () => {
         const section = document.querySelector(".container");
-        console.log(section);
         section.scrollLeft += window.innerWidth;
+
+        const firstEle = document.querySelector(".first");
+        const circle = document.querySelector(".fa-circle");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+
+        console.log(circle.getBoundingClientRect().x, window.innerWidth - 30);
+
+        circle.getBoundingClientRect().x < window.innerWidth - 27
+          ? (nextBtn.style.display = "none")
+          : (nextBtn.style.display = "block");
+
+        if (firstEle.getBoundingClientRect().x < 0) {
+          console.log("..........................");
+          prevBtn.style.display = "block";
+        }
       };
+
+      const handlePrev = () => {
+        const section = document.querySelector(".container");
+        section.scrollLeft -= window.innerWidth;
+
+        const firstEle = document.querySelector(".first");
+        const circle = document.querySelector(".fa-circle");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        circle.getBoundingClientRect().x < window.innerWidth - 27
+          ? (nextBtn.style.display = "none")
+          : (nextBtn.style.display = "block");
+
+        firstEle.getBoundingClientRect().x < 0
+          ? (prevBtn.style.display = "block")
+          : (prevBtn.style.display = "none");
+      };
+      window.addEventListener("load", () => {
+        const firstEle = document.querySelector(".first");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        const circle = document.querySelector(".fa-circle");
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "block";
+
+        console.log(firstEle.getBoundingClientRect(), prevBtn.style.display);
+        if (firstEle.getBoundingClientRect().x < 0) {
+          prevBtn.style.display = "block";
+        }
+
+        circle.getBoundingClientRect().x < window.innerWidth - 27
+          ? (nextBtn.style.display = "none")
+          : (nextBtn.style.display = "block");
+      });
     </script>
   </head>
   <body>
     <section class="container">
+      <div class="prev" onclick="{handlePrev()}">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </div>
       <img
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg"
         alt="Bhutan"
+        class="first"
       />
       <img
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-2.jpg"
@@ -46,6 +99,7 @@
         alt="Bhutan"
         class="lastChild"
       />
+      <i class="fa fa-circle" aria-hidden="true"></i>
 
       <div class="next" onclick="{handleNext()}">
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
